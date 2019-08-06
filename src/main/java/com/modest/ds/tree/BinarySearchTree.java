@@ -36,11 +36,11 @@ public class BinarySearchTree {
      * 向二叉搜索树中插入元素
      **
      * @param data
-     * @return  
+     * @return
      */
     public boolean insert(int data) {
         TreeNode node = new TreeNode(data);
-        
+
         //若树为空，直接插入
         if(this.root == null){
             this.root = node;
@@ -50,7 +50,7 @@ public class BinarySearchTree {
 
         //用于遍历的指针
         TreeNode cur = this.root;
-       
+
         //用于记录根节点的指针
         TreeNode parent = cur;
 
@@ -58,7 +58,7 @@ public class BinarySearchTree {
         while(cur != null) {
             //记录当前的根节点
             parent = cur;
-            
+
             //要插入的值小于根节点的值
             if(data < cur.data ){
                 cur = cur.left;
@@ -74,7 +74,7 @@ public class BinarySearchTree {
         }
 
         //记录当前根节点的指针的左子树或右子树为空
-        
+
         //若要插入的数据小于当前记录的根节点的值，将新节点插入当前记录的根节点的左子树
         if(data<parent.data) {
             parent.left = node;
@@ -91,17 +91,17 @@ public class BinarySearchTree {
     /**
      *
      * 删除二叉搜索树的节点
-     * 
+     *
      * @return
      */
     public boolean erase(int date) {
         if(this.root == null) {
             return false;
         }
-        
+
         TreeNode cur = this.root;
         TreeNode parent = null;
-        
+
         while (cur != null) {
             if(cur.data == date ){
                 break;
