@@ -6,7 +6,7 @@ import com.modest.ds.utils.TreeNode;
 /**
  * 二叉搜索树
  *
- * 注意：树的节点的左右节点的访问权限不能设置成private，通过getter/setter方法获取
+ * 注意：树的节点的左右节点的访问权限不能设置成private，不能通过getter/setter方法获取
  *
  * 概念：或者是一棵空树，或者具有以下性质
  *

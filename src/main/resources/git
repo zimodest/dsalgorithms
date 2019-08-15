@@ -1,0 +1,104 @@
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/zimodest/dsalgorithms.git
+git push -u origin master
+
+配置本地仓库的账号和邮箱，注册仓库，git bash中
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+克隆远程仓库
+$ git clone https://github.com/zimodest/dsalgorithms.git
+
+git rm 删除远程仓库中的文件，参数-r表示删除要删除文件夹下所有的文件，参数--cached，表示不删除本地文件  target表示要删除的文件夹
+git rm -r --cached target
+
+git status
+echo c1 >> a
+练习使用git echo c1 >> a  将字符串c1输入到文件a中
+git add .
+将当前目录中的文件添加到提交状态
+git commit -m “message”  提交并添加提交信息message
+
+在master分支上做一次提交c1，然后新建一个分支a，并切换到a分支
+创建新分支  git branch branchName
+切换到新分支 git checkout branchName
+
+可以将上面的命令合并到一起
+git checkout -b branchName
+
+切换和新建分支时，工作原理是.git目录下的HEAD引用
+在切换分支时，./git/HEAD 文件发生改变
+cat .git/HEAD
+master 分支下
+    refs/heads/master
+a分支下
+    refs/heads/a
+git checkout --merge <branch>
+这个命令适用于在切换分支的时候，将当前分支修改的内容一起打包带走，同步到切换的分支下
+
+git checkout d的详细使用
+https://www.cnblogs.com/kuyuecs/p/7111749.html
+
+查看本地分支
+git branch
+
+查看远程分支
+git branch -r
+
+查看所有分支
+git branch -a
+
+创建本地分支
+git branch
+
+切换分支
+git checkout branchname
+
+创建并切换分支
+git checkout -b branchname
+
+将新分支推送到GitHub
+git push origin save
+
+删除本地分支
+git branch -d branchname
+
+删除远程分支
+git push origin : branchname （冒号表示删除）
+
+基于某一次commit 创建分支
+git branch -b new_branch <start point>
+
+切换到分支的游离状态，默认以该分支下的最后一次提交ID
+git checkout --datch <branch>
+
+强制创建新分支，若分支名存在，创建并覆盖以前的分支
+git checkout -B <branch>
+尽量使用git checkout -b <branch>  以防误删旧分支
+
+是的，假如你的某个分支上，积累了无数次的提交，你也懒得去打理，
+打印出的log也让你无力吐槽，那么这个命令将是你的神器，
+它会基于当前所在分支新建一个赤裸裸的分支，没有任何的提交历史，
+但是当前分支的内容一一俱全。新建的分支，严格意义上说，还不是一个分支，
+因为HEAD指向的引用中没有commit值，只有在进行一次提交后，它才算得上真正的分支
+git checkout --orphan <branch>
+
+这个命令适用于在切换分支的时候，将当前分支修改的内容一起打包带走，同步到切换的分支下。
+git checkout --merge <branch>
+有两个需要注意的问题。
+第一，如果当前分支和切换分支间的内容不同的话，容易造成冲突。
+第二，切换到新分支后，当前分支修改过的内容就丢失了。
+所以这个命令，慎用！
+
+这个命令可以用来打补丁。这个命令主要用来比较两个分支间的差异内容，并提供交互式的界面来选择进一步的操作。
+这个命令不仅可以比较两个分支间的差异，还可以比较单个文件的差异哦
+git checkout -p <branch>
+
+
+
+
+
+
+

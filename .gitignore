@@ -4,4 +4,4 @@ shuai.iml
 pom.xml
 target
 test
-src/main/resources
+src/main/resources/git.txt

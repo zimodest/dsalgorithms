@@ -1,5 +1,9 @@
 package com.modest.ds.sort;
 
+import com.modest.ds.utils.MyPrint;
+
+import java.util.Stack;
+
 /**
  * description
  *
@@ -97,6 +101,130 @@ public class Sort {
 
         } while (k != 1);
 
+    }
+
+
+    /**
+     * 非递归的快速排序
+     * @param arr 要排序数组
+     */
+    public static void quickSort(int[] arr) {
+        int left = 0;
+        int right = arr.length-1;
+
+        //用于保存要排序子数组的左右下标
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(right);
+        stack.push(left);
+
+        while (!stack.empty()) {
+
+            int i = stack.peek();
+            stack.pop();
+            int j = stack.peek();
+            stack.pop();
+            int midIndex = qSort(arr,i,j);
+
+            //每一趟快排结束后，将符合条件的两个左右下标按先右后左的顺序插入栈
+            if (midIndex+1 < j) {
+                stack.push(j);
+                stack.push(midIndex+1);
+            }
+
+            if (i<midIndex-1) {
+                stack.push(midIndex - 1);
+                stack.push(i);
+            }
+        }
+
+    }
+
+    /**
+     * 一趟快速排序
+     * @param arr 要排序数组
+     * @param left 左下标
+     * @param right 右下标
+     * @return key值对应的下标
+     */
+    private static int qSort(int[] arr, int left, int right) {
+
+        if(left >= right) {
+            return -1;
+        }
+
+        int key = arr[left];
+        int i = left;
+        int j = right;
+        while(i < j) {
+            while (arr[j] >= key && i <j) {
+                j--;
+            }
+
+            while(arr[i] <= key && i<j) {
+                i++;
+            }
+
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        int temp = arr[left];
+        arr[left] = arr[j];
+        arr[j] = temp;
+
+        return i;
+    }
+
+
+
+    public static void quickSort(int[] arr, int left, int right) {
+
+        int key = arr[left];
+        int i = left;
+        int j = right;
+        while(i < j) {
+            while (arr[j] >= key && i <j) {
+                j--;
+            }
+            while(arr[i] <= key && i<j) {
+                i++;
+            }
+            swap(arr,i,j);
+        }
+        swap(arr, left, j);
+
+        if (left<i-1) {
+            quickSort(arr,left,i-1);
+        }
+
+        if (i+1 < right) {
+            quickSort(arr,i+1,right);
+        }
+
+    }
+
+    /**
+     * 交换整形数组中的两个数
+     * @param arr  要交换的数组
+     * @param i 交换的下标
+     * @param j 交换的下标
+     */
+    private static void swap(int[] arr, int i, int j) {
+        //两个数相同时，直接返回，因为使用异或运算，两个数相同时，异或运算结果为0，两个数会变成0，无法交换
+        if(arr[i] == arr[j]) {
+            return;
+        }
+        arr[i] = arr[i] ^ arr[j];
+
+        arr[j] = arr[i] ^ arr[j];
+
+        arr[i] = arr[i] ^ arr[j];
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{7,1,9,5,2,4,3,8,6,0};
+        swap(arr,0, 1);
+        MyPrint.printIntArray(arr);
     }
 
 

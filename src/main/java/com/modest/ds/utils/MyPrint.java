@@ -77,6 +77,7 @@ public class MyPrint<T> {
         while(queue.size() != 0) {
             front = queue.getFirst();
             queue.removeFirst();
+
             if(front.left != null) {
                 queue.addLast(front.left);
             }
@@ -86,16 +87,6 @@ public class MyPrint<T> {
             }
             System.out.print(front.data);
         }
-
-
-
-
-
-
-
-
-
-
     }
 
 

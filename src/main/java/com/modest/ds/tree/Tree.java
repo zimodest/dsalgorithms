@@ -29,15 +29,14 @@ public class Tree {
         this.root = new TreeNode(arr[0]);
         queue.addLast(this.root );
         int i = 1;
-        TreeNode front = null;
+        TreeNode front;
         while(i<arr.length) {
 
             front = queue.getFirst();
 
             if(front.left == null) {
 
-                TreeNode node = new TreeNode(arr[i++]) ;
-                front.left = node;
+                front.left = new TreeNode(arr[i++]);
                 queue.addLast(front.left);
                 if(i == arr.length) {
                     return this.root;
@@ -45,8 +44,7 @@ public class Tree {
             }
             if(front.right == null){
 
-                TreeNode node = new TreeNode(arr[i++]) ;
-                front.right = node;
+                front.right = new TreeNode(arr[i++]);
                 queue.addLast(front.right);
                 queue.removeFirst();
                 if(i == arr.length) {
@@ -62,4 +60,11 @@ public class Tree {
     }
 
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 }
