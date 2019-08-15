@@ -1,6 +1,6 @@
 package com.modest.ds.sort;
 
-import com.modest.ds.utils.MyPrint;
+import com.modest.ds.utils.Order;
 
 import java.util.Stack;
 
@@ -224,7 +224,7 @@ public class Sort {
     public static void main(String[] args) {
         int[] arr = new int[]{7,1,9,5,2,4,3,8,6,0};
         swap(arr,0, 1);
-        MyPrint.printIntArray(arr);
+        Order.printIntArray(arr);
     }
 
 

@@ -3,6 +3,7 @@ package com.modest.ds.tree;
 import com.modest.ds.utils.TreeNode;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * description
@@ -55,16 +56,42 @@ public class Tree {
         return this.root;
     }
 
-    public void add(int data) {
+    public boolean add(int data) {
+        if(Objects.isNull(this.root)) {
+            this.root = new TreeNode(data);
+            this.size++;
+            return true;
+        }
 
+        TreeNode cur;
+
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.addLast(this.root);
+
+        while(queue.size() != 0) {
+            cur = queue.getFirst();
+            queue.removeFirst();
+
+            if(cur.left == null) {
+                cur.left = new TreeNode(data);
+                this.size++;
+                return true;
+            }
+            queue.addLast(cur.left);
+
+            if(cur.right == null) {
+                cur.right = new TreeNode(data);
+                this.size++;
+                return true;
+            }
+            queue.addLast(cur.right);
+        }
+
+        return false;
     }
 
 
     public int getSize() {
         return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 }

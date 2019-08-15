@@ -10,7 +10,7 @@ import java.util.Queue;
  * @author modest
  * @date 2019/08/01
  */
-public class MyPrint<T> {
+public class Order<T> {
     /**
      * 数组打印
      * @param arr 要打印的数组
