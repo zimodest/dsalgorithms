@@ -221,11 +221,14 @@ public class Sort {
         arr[i] = arr[i] ^ arr[j];
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{7,1,9,5,2,4,3,8,6,0};
-        swap(arr,0, 1);
-        Order.printIntArray(arr);
+    public static void bubbleSort(int[] arr) {
+        for(int i =0; i<arr.length; i++) {
+            for(int j=1; j<arr.length - i; j++) {
+                if(arr[j-1] > arr[j]) {
+                    swap(arr,j-1,j);
+                }
+            }
+        }
     }
-
 
 }
