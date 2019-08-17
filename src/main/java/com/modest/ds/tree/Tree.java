@@ -1,6 +1,6 @@
 package com.modest.ds.tree;
 
-import com.modest.ds.utils.TreeNode;
+import com.modest.ds.utils.Node;
 
 import java.util.LinkedList;
 import java.util.Objects;
@@ -13,31 +13,31 @@ import java.util.Objects;
  */
 public class Tree {
 
-    public TreeNode root;
+    public Node root;
     private int size = 0;
 
-    public  TreeNode createTree(int[] arr) {
+    public  Node createTree(int[] arr) {
         if(arr.length == 0) {
             return null;
         }
 
         if(arr.length == 1) {
-            this.root = new TreeNode(arr[0]);
+            this.root = new Node(arr[0]);
             return root;
         }
 
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-        this.root = new TreeNode(arr[0]);
+        LinkedList<Node> queue = new LinkedList<Node>();
+        this.root = new Node(arr[0]);
         queue.addLast(this.root );
         int i = 1;
-        TreeNode front;
+        Node front;
         while(i<arr.length) {
 
             front = queue.getFirst();
 
             if(front.left == null) {
 
-                front.left = new TreeNode(arr[i++]);
+                front.left = new Node(arr[i++]);
                 queue.addLast(front.left);
                 if(i == arr.length) {
                     return this.root;
@@ -45,7 +45,7 @@ public class Tree {
             }
             if(front.right == null){
 
-                front.right = new TreeNode(arr[i++]);
+                front.right = new Node(arr[i++]);
                 queue.addLast(front.right);
                 queue.removeFirst();
                 if(i == arr.length) {
@@ -58,14 +58,14 @@ public class Tree {
 
     public boolean add(int data) {
         if(Objects.isNull(this.root)) {
-            this.root = new TreeNode(data);
+            this.root = new Node(data);
             this.size++;
             return true;
         }
 
-        TreeNode cur;
+        Node cur;
 
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        LinkedList<Node> queue = new LinkedList<Node>();
         queue.addLast(this.root);
 
         while(queue.size() != 0) {
@@ -73,14 +73,14 @@ public class Tree {
             queue.removeFirst();
 
             if(cur.left == null) {
-                cur.left = new TreeNode(data);
+                cur.left = new Node(data);
                 this.size++;
                 return true;
             }
             queue.addLast(cur.left);
 
             if(cur.right == null) {
-                cur.right = new TreeNode(data);
+                cur.right = new Node(data);
                 this.size++;
                 return true;
             }

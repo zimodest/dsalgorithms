@@ -1,11 +1,17 @@
 package com.modest.ds.sort;
 
-import com.modest.ds.utils.Order;
-
 import java.util.Stack;
 
 /**
- * description
+ * 排序
+ *
+ * 插入排序 insertSort insertSort1
+ * 选择排序 选择排序
+ * 希尔排序 shellSort
+ * 快速排序  循环 quickSort(int[] arr)  递归 quickSort(int[] arr, int left, int right)
+ * 冒泡排序 bubbleSort
+ * 堆排序
+ * 归并排序
  *
  * @author modest
  * @date 2019/08/01
@@ -221,6 +227,10 @@ public class Sort {
         arr[i] = arr[i] ^ arr[j];
     }
 
+    /**
+     * 冒泡排序
+     * @param arr 要排序数组
+     */
     public static void bubbleSort(int[] arr) {
         for(int i =0; i<arr.length; i++) {
             for(int j=1; j<arr.length - i; j++) {

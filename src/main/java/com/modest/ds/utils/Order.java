@@ -27,7 +27,7 @@ public class Order<T> {
      *
      * @param root 树的根节点
      */
-    public static void preOrder(TreeNode root) {
+    public static void preOrder(Node root) {
         if(root == null) {
             return;
         }
@@ -41,7 +41,7 @@ public class Order<T> {
      * 中序遍历，递归
      * @param root 树的根节点
      */
-    public static void inOrder(TreeNode root) {
+    public static void inOrder(Node root) {
         if(root == null) {
             return;
         }
@@ -55,7 +55,7 @@ public class Order<T> {
      * 后序遍历，递归
      * @param root 树的根节点
      */
-    public static void postOrder(TreeNode root) {
+    public static void postOrder(Node root) {
         if(root == null) {
             return;
         }
@@ -64,14 +64,14 @@ public class Order<T> {
         System.out.println(root.data);
     }
 
-    public static void LevelOrder(TreeNode root) {
+    public static void LevelOrder(Node root) {
 
         if(Objects.isNull(root)) {
             return;
         }
 
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-        TreeNode front = null;
+        LinkedList<Node> queue = new LinkedList<Node>();
+        Node front = null;
         queue.addLast(root);
 
         while(queue.size() != 0) {

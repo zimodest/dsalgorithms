@@ -1,6 +1,6 @@
 package com.modest.ds.tree;
 
-import com.modest.ds.utils.TreeNode;
+import com.modest.ds.utils.Node;
 
 
 /**
@@ -19,7 +19,7 @@ import com.modest.ds.utils.TreeNode;
  */
 public class BinarySearchTree {
 
-    public TreeNode root;
+    public Node root;
     private int size = 0;
 
     public int getSize() {
@@ -39,7 +39,7 @@ public class BinarySearchTree {
      * @return
      */
     public boolean insert(int data) {
-        TreeNode node = new TreeNode(data);
+        Node node = new Node(data);
 
         //若树为空，直接插入
         if(this.root == null){
@@ -49,10 +49,10 @@ public class BinarySearchTree {
         }
 
         //用于遍历的指针
-        TreeNode cur = this.root;
+        Node cur = this.root;
 
         //用于记录根节点的指针
-        TreeNode parent = cur;
+        Node parent = cur;
 
         //用于循环的指针不为空时，进入循环
         while(cur != null) {
@@ -99,8 +99,8 @@ public class BinarySearchTree {
             return false;
         }
 
-        TreeNode cur = this.root;
-        TreeNode parent = null;
+        Node cur = this.root;
+        Node parent = null;
 
         while (cur != null) {
             if(cur.data == date ){
@@ -145,8 +145,8 @@ public class BinarySearchTree {
             //也可以在右子树中找：右子树中最左侧节点
 
             //右子树
-            TreeNode pFirstOfIn = cur.right;
-            TreeNode pParent = cur;
+            Node pFirstOfIn = cur.right;
+            Node pParent = cur;
 
 
             while (pFirstOfIn.left != null) {
@@ -168,7 +168,7 @@ public class BinarySearchTree {
             return false;
         }
 
-        TreeNode cur = this.root;
+        Node cur = this.root;
         while (cur != null) {
             if(cur.data == data) {
                 return true;
@@ -192,7 +192,7 @@ public class BinarySearchTree {
      *
      * @param root  根节点
      */
-    public void inOrder(TreeNode root) {
+    public void inOrder(Node root) {
         if(root == null) {
             return;
         }
