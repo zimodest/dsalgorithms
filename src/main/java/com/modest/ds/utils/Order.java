@@ -12,7 +12,7 @@ import java.util.Queue;
  */
 public class Order<T> {
     /**
-     * 数组打印
+     * 数组遍历
      * @param arr 要打印的数组
      */
     public static void printIntArray(int[] arr) {

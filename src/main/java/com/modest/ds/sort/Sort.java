@@ -1,5 +1,7 @@
 package com.modest.ds.sort;
 
+import com.modest.ds.utils.HeapUtils;
+
 import java.util.Stack;
 
 /**
@@ -25,7 +27,6 @@ public class Sort {
      * @param arr 排序数组
      */
     public static void insertSort(int[] arr) {
-
         //遍历有序部分
         for(int i=0; i<arr.length-1; i++) {
 
@@ -225,6 +226,29 @@ public class Sort {
         arr[j] = arr[i] ^ arr[j];
 
         arr[i] = arr[i] ^ arr[j];
+    }
+
+
+    /**
+     *
+     * 大堆排序
+     *
+     * 将根节点与最后一个节点调换位置
+     * 将根节点向下调整
+     * 将根节点与倒数第二个节点调换位置
+     * 将根节点向下调整
+     * 直到根节点与自己交换，调整
+     *
+     * @param arr 堆数组
+     */
+    public static void heapSort(int[] arr) {
+        int len = arr.length;
+        int lon = len-1;
+        for(int i=len -1; i>0; i--,lon--) {
+            swap(arr,0,i);
+            //每次交换后，输入的数组长度减1
+            HeapUtils.heapAdjustDown(arr,0,lon);
+        }
     }
 
     /**

@@ -11,7 +11,7 @@ public class Heap {
 
 
     private int capacity;
-    int[] heap ;
+    public int[] heap ;
     private int size = 0;
 
     public Heap() {
@@ -30,9 +30,9 @@ public class Heap {
      * 从数组后面开始向下调整
      * @param arr
      */
-    public void createBigHeap(int[] arr) {
+    public int[] createBigHeap(int[] arr) {
         if(arr == null || arr.length == 0) {
-            return;
+            return null;
         }
 
         for(int j=0; j<arr.length; j++) {
@@ -48,6 +48,7 @@ public class Heap {
             i--;
         }
 
+        return this.heap;
     }
 
     /**
