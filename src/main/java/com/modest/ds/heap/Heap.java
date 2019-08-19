@@ -51,6 +51,11 @@ public class Heap {
         return this.heap;
     }
 
+    public int[] createSmallHeap(int[] arr) {
+
+        return this.heap;
+    }
+
     /**
      *
      * 向下调整某个节点

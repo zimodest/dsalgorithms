@@ -12,8 +12,8 @@ import java.util.Stack;
  * 希尔排序 shellSort
  * 快速排序  循环 quickSort(int[] arr)  递归 quickSort(int[] arr, int left, int right)
  * 冒泡排序 bubbleSort
- * 堆排序
- * 归并排序
+ * 堆排序 heapSort
+ * 归并排序 mergeSort
  *
  * @author modest
  * @date 2019/08/01
@@ -146,6 +146,33 @@ public class Sort {
 
     }
 
+
+    public static void quickSort(int[] arr, int left, int right) {
+
+        int key = arr[left];
+        int i = left;
+        int j = right;
+        while(i < j) {
+            while (arr[j] >= key && i <j) {
+                j--;
+            }
+            while(arr[i] <= key && i<j) {
+                i++;
+            }
+            swap(arr,i,j);
+        }
+        swap(arr, left, j);
+
+        if (left<i-1) {
+            quickSort(arr,left,i-1);
+        }
+
+        if (i+1 < right) {
+            quickSort(arr,i+1,right);
+        }
+
+    }
+
     /**
      * 一趟快速排序
      * @param arr 要排序数组
@@ -182,53 +209,6 @@ public class Sort {
         return i;
     }
 
-
-
-    public static void quickSort(int[] arr, int left, int right) {
-
-        int key = arr[left];
-        int i = left;
-        int j = right;
-        while(i < j) {
-            while (arr[j] >= key && i <j) {
-                j--;
-            }
-            while(arr[i] <= key && i<j) {
-                i++;
-            }
-            swap(arr,i,j);
-        }
-        swap(arr, left, j);
-
-        if (left<i-1) {
-            quickSort(arr,left,i-1);
-        }
-
-        if (i+1 < right) {
-            quickSort(arr,i+1,right);
-        }
-
-    }
-
-    /**
-     * 交换整形数组中的两个数
-     * @param arr  要交换的数组
-     * @param i 交换的下标
-     * @param j 交换的下标
-     */
-    private static void swap(int[] arr, int i, int j) {
-        //两个数相同时，直接返回，因为使用异或运算，两个数相同时，异或运算结果为0，两个数会变成0，无法交换
-        if(arr[i] == arr[j]) {
-            return;
-        }
-        arr[i] = arr[i] ^ arr[j];
-
-        arr[j] = arr[i] ^ arr[j];
-
-        arr[i] = arr[i] ^ arr[j];
-    }
-
-
     /**
      *
      * 大堆排序
@@ -264,5 +244,70 @@ public class Sort {
             }
         }
     }
+
+
+    public static void mergeSort(int[] arr, int low, int high) {
+
+        int mid = low + (high - low) / 2;
+
+        if(low < high) {
+            mergeSort(arr, low, mid);
+            mergeSort(arr,mid + 1, high);
+
+            merge(arr,low, mid, high);
+        }
+
+    }
+
+    private static void merge(int[] arr, int low, int mid, int high) {
+        int[] temp = new int[high - low + 1];
+        int i = low;
+
+        int j = mid + 1;
+
+        int k = 0;
+
+        while(i <= mid && j<=high) {
+            if(arr[i] < arr[j]) {
+                temp[k++] = arr[i++];
+            }else {
+                temp[k++] = arr[j++];
+            }
+        }
+
+        while(i <= mid) {
+            temp[k++] = arr[i++];
+        }
+
+        while(j <= high) {
+            temp[k++] = arr[j++];
+        }
+
+        for(int x=0; x<temp.length; x++) {
+            arr[x+low] = temp[x];
+        }
+
+
+    }
+
+
+    /**
+     * 交换整形数组中的两个数
+     * @param arr  要交换的数组
+     * @param i 交换的下标
+     * @param j 交换的下标
+     */
+    private static void swap(int[] arr, int i, int j) {
+        //两个数相同时，直接返回，因为使用异或运算，两个数相同时，异或运算结果为0，两个数会变成0，无法交换
+        if(arr[i] == arr[j]) {
+            return;
+        }
+        arr[i] = arr[i] ^ arr[j];
+
+        arr[j] = arr[i] ^ arr[j];
+
+        arr[i] = arr[i] ^ arr[j];
+    }
+
 
 }
