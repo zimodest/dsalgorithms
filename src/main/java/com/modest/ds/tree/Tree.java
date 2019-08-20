@@ -56,7 +56,7 @@ public class Tree {
         return this.root;
     }
 
-    public boolean add(int data) {
+    boolean add(int data) {
         if(Objects.isNull(this.root)) {
             this.root = new Node(data);
             this.size++;
