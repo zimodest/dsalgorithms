@@ -32,7 +32,7 @@ public class Order<T> {
             return;
         }
 
-        System.out.println(root.data);
+        System.out.println((char)root.data);
         preOrder(root.left);
         preOrder(root.right);
     }

@@ -92,7 +92,7 @@ public class BinarySearchTree {
      *
      * 删除二叉搜索树的节点
      *
-     * @return
+     * @return 删除结果
      */
     public boolean erase(int date) {
         if(this.root == null) {
