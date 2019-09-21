@@ -308,59 +308,5 @@ public class Sort {
 
         arr[i] = arr[i] ^ arr[j];
     }
-
-
-    public static void mergeS(int[] arr, int low, int high) {
-        int mid  = low +(high - low) / 2;
-
-        if(low < mid) {
-            mergeS(arr,low,mid);
-        }
-
-        if(mid+1 < high) {
-            mergeS(arr,mid+1, high);
-        }
-
-        merge(arr,low,mid, mid+1, high);
-    }
-
-    public static void merge(int[] arr, int low, int left, int right, int high) {
-        int[] temp = new int[high-low+1];
-
-        int i=low,j=right;
-        int index = 0;
-
-        while(true) {
-            if(arr[i] <= arr[j]) {
-                temp[index] = arr[i];
-                index++;
-                i++;
-            }else {
-                temp[index] = arr[j];
-                j++;
-                index++;
-            }
-            if(i>left || j>high) {
-                break;
-            }
-        }
-
-        while(i<=left) {
-            temp[index] = temp[i];
-            index++;
-            i++;
-        }
-
-        while (j<high) {
-            temp[index] = temp[j];
-            index++;
-            j++;
-        }
-
-        for(int x=low,y=0; x<=high; x++,y++) {
-            arr[x] = temp[y];
-        }
-    }
-
 }
 
