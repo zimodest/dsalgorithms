@@ -5,6 +5,9 @@ import java.util.concurrent.Semaphore;
 
 /**
  * 工人工作任务
+ *
+ * 信号量Semaphore类的使用
+ *
  */
 class SemaphoreTask implements Runnable{
 
@@ -22,7 +25,6 @@ class SemaphoreTask implements Runnable{
         try{
             semaphore.acquire();
             System.out.println(Thread.currentThread().getName()+"占用一台设备生产");
-
             semaphore.release();
         }catch (Exception e) {
             e.printStackTrace();
